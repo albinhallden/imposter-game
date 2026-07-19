@@ -186,22 +186,21 @@ select#category-select {
 
 .card {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  display: grid;
   perspective: 1000px;
   cursor: pointer;
   margin: 12px 0;
 }
 
 .card-face {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  grid-area: 1 / 1;
   border-radius: var(--radius);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 10px;
+  padding: 48px 24px;
   backface-visibility: hidden;
   transition: transform 0.5s;
 }
@@ -216,7 +215,6 @@ select#category-select {
 .card-back {
   background: linear-gradient(145deg, var(--accent), #5142c4);
   transform: rotateY(180deg);
-  padding: 20px;
 }
 
 .card-back.imposter {
