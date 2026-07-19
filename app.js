@@ -204,7 +204,7 @@ function renderHowToPlay() {
     <div class="screen howto-screen">
       <h1>${T.howToPlayTitle}</h1>
       <ol class="howto-steps">${steps}</ol>
-      <button id="howto-back-btn" class="primary-btn">${T.backBtn}</button>
+      <button id="howto-back-btn" class="secondary-btn">${T.backBtn}</button>
     </div>
   `;
 
