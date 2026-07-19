@@ -42,6 +42,28 @@ body {
   text-align: center;
 }
 
+.lang-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.lang-pill {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.lang-pill.active {
+  background: var(--accent);
+  color: white;
+}
+
 h1 {
   font-size: 2rem;
   margin: 0 0 4px;

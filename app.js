@@ -1,8 +1,12 @@
+const LANG = typeof window.LANG === "string" && TRANSLATIONS[window.LANG] ? window.LANG : "en";
+const T = TRANSLATIONS[LANG];
+const WORDS = WORD_CATEGORIES_BY_LANG[LANG];
+
 const state = {
   screen: "setup",
   players: 6,
   imposters: 1,
-  category: CATEGORY_NAMES[0],
+  category: "all",
   playerNames: [],
   secretWord: "",
   imposterIndexes: [],
@@ -14,10 +18,8 @@ const state = {
 
 const app = document.getElementById("app");
 
-function pickWord(category) {
-  const pool = category === "All"
-    ? Object.values(WORD_CATEGORIES).flat()
-    : WORD_CATEGORIES[category];
+function pickWord(categoryId) {
+  const pool = categoryId === "all" ? Object.values(WORDS).flat() : WORDS[categoryId];
   return pool[Math.floor(Math.random() * pool.length)];
 }
 
@@ -34,7 +36,7 @@ function ensurePlayerNames() {
   const existing = state.playerNames || [];
   const result = [];
   for (let i = 0; i < state.players; i++) {
-    result.push(existing[i] || `Player ${i + 1}`);
+    result.push(existing[i] || `${T.playerWord} ${i + 1}`);
   }
   state.playerNames = result;
 }
@@ -99,18 +101,27 @@ function render() {
   else if (state.screen === "result") renderResult();
 }
 
+function languageSwitcherHtml() {
+  const links = LANGUAGE_CODES.map((code) => {
+    const active = code === LANG ? "active" : "";
+    return `<a class="lang-pill ${active}" href="/${code}/">${TRANSLATIONS[code].flag} ${TRANSLATIONS[code].nativeName}</a>`;
+  }).join("");
+  return `<div class="lang-switcher">${links}</div>`;
+}
+
 function renderSetup() {
-  const categoryOptions = [...CATEGORY_NAMES, "All"]
-    .map((c) => `<option value="${c}" ${c === state.category ? "selected" : ""}>${c}</option>`)
+  const categoryOptions = ["all", ...CATEGORY_IDS]
+    .map((id) => `<option value="${id}" ${id === state.category ? "selected" : ""}>${T.categories[id]}</option>`)
     .join("");
 
   app.innerHTML = `
     <div class="screen setup-screen">
+      ${languageSwitcherHtml()}
       <h1>Imposter</h1>
-      <p class="subtitle">Pass the phone around. Everyone except the impostor gets a secret word.</p>
+      <p class="subtitle">${T.subtitleSetup}</p>
 
       <label class="field">
-        Number of players
+        ${T.playersLabel}
         <div class="stepper">
           <button id="players-minus" class="step-btn">−</button>
           <span id="players-value">${state.players}</span>
@@ -119,7 +130,7 @@ function renderSetup() {
       </label>
 
       <label class="field">
-        Number of impostors
+        ${T.impostersLabel}
         <div class="stepper">
           <button id="imposters-minus" class="step-btn">−</button>
           <span id="imposters-value">${state.imposters}</span>
@@ -128,11 +139,11 @@ function renderSetup() {
       </label>
 
       <label class="field">
-        Category
+        ${T.categoryLabel}
         <select id="category-select">${categoryOptions}</select>
       </label>
 
-      <button id="start-btn" class="primary-btn">Continue</button>
+      <button id="start-btn" class="primary-btn">${T.continueBtn}</button>
     </div>
   `;
 
@@ -172,7 +183,7 @@ function renderNames() {
     .map(
       (name, i) => `
         <label class="field name-field">
-          Player ${i + 1}
+          ${T.playerWord} ${i + 1}
           <input type="text" class="name-input" data-index="${i}" value="${name.replace(/"/g, "&quot;")}" maxlength="20">
         </label>
       `
@@ -181,18 +192,18 @@ function renderNames() {
 
   app.innerHTML = `
     <div class="screen names-screen">
-      <h1>Name Your Players</h1>
-      <p class="subtitle">Enter each player's name, or keep the defaults.</p>
+      <h1>${T.namesTitle}</h1>
+      <p class="subtitle">${T.namesSubtitle}</p>
       <div class="name-list">${inputs}</div>
-      <button id="start-game-btn" class="primary-btn">Start Game</button>
-      <button id="back-btn" class="secondary-btn">Back</button>
+      <button id="start-game-btn" class="primary-btn">${T.startGameBtn}</button>
+      <button id="back-btn" class="secondary-btn">${T.backBtn}</button>
     </div>
   `;
 
   document.querySelectorAll(".name-input").forEach((input) => {
     input.oninput = (e) => {
       const i = Number(e.target.dataset.index);
-      state.playerNames[i] = e.target.value.trim() || `Player ${i + 1}`;
+      state.playerNames[i] = e.target.value.trim() || `${T.playerWord} ${i + 1}`;
     };
   });
   document.getElementById("start-game-btn").onclick = startGame;
@@ -204,27 +215,27 @@ function renderNames() {
 
 function renderReveal() {
   const playerNum = state.revealIndex + 1;
-  const playerName = state.playerNames[state.revealIndex] || `Player ${playerNum}`;
+  const playerName = state.playerNames[state.revealIndex] || `${T.playerWord} ${playerNum}`;
   const isImposter = state.imposterIndexes.includes(state.revealIndex);
 
   app.innerHTML = `
     <div class="screen reveal-screen">
-      <p class="pass-label">Pass the phone to</p>
+      <p class="pass-label">${T.passLabel}</p>
       <h1>${playerName}</h1>
 
       <div id="card" class="card ${state.cardRevealed ? "revealed" : ""}">
         <div class="card-face card-front">
-          <span>Tap to reveal</span>
+          <span>${T.tapToReveal}</span>
         </div>
         <div class="card-face card-back ${isImposter ? "imposter" : ""}">
           ${isImposter
-            ? `<span class="imposter-text">YOU ARE THE<br>IMPOSTOR</span>`
-            : `<span class="word-label">Your word</span><span class="word-text">${state.secretWord}</span>`}
+            ? `<span class="imposter-text">${T.impostorLine1}<br>${T.impostorLine2}</span>`
+            : `<span class="word-label">${T.yourWordLabel}</span><span class="word-text">${state.secretWord}</span>`}
         </div>
       </div>
 
       <button id="next-btn" class="primary-btn" ${state.cardRevealed ? "" : "disabled"}>
-        ${playerNum < state.players ? "Hide & continue" : "Hide & start discussion"}
+        ${playerNum < state.players ? T.hideContinueBtn : T.hideStartDiscussionBtn}
       </button>
     </div>
   `;
@@ -250,18 +261,18 @@ function renderReveal() {
 function renderDiscuss() {
   app.innerHTML = `
     <div class="screen discuss-screen">
-      <h1>Discuss</h1>
-      <p class="subtitle">Everyone describes the word with one word at a time. Then vote on who you think the impostor is.</p>
+      <h1>${T.discussTitle}</h1>
+      <p class="subtitle">${T.discussSubtitle}</p>
 
       <div id="timer-display" class="timer-display">${formatTime(state.timerSeconds)}</div>
 
       <div class="timer-buttons">
-        <button data-secs="60" class="secondary-btn timer-btn">1 min</button>
-        <button data-secs="180" class="secondary-btn timer-btn">3 min</button>
-        <button data-secs="300" class="secondary-btn timer-btn">5 min</button>
+        <button data-secs="60" class="secondary-btn timer-btn">1 ${T.minWord}</button>
+        <button data-secs="180" class="secondary-btn timer-btn">3 ${T.minWord}</button>
+        <button data-secs="300" class="secondary-btn timer-btn">5 ${T.minWord}</button>
       </div>
 
-      <button id="reveal-result-btn" class="primary-btn">Reveal the Impostor</button>
+      <button id="reveal-result-btn" class="primary-btn">${T.revealImpostorBtn}</button>
     </div>
   `;
 
@@ -279,20 +290,20 @@ function renderResult() {
   const imposterList = state.imposterIndexes
     .slice()
     .sort((a, b) => a - b)
-    .map((i) => state.playerNames[i] || `Player ${i + 1}`)
+    .map((i) => state.playerNames[i] || `${T.playerWord} ${i + 1}`)
     .join(", ");
-  const label = state.imposterIndexes.length > 1 ? "The impostors were:" : "The impostor was:";
+  const label = state.imposterIndexes.length > 1 ? T.impostorsWereLabel : T.impostorWasLabel;
 
   app.innerHTML = `
     <div class="screen result-screen">
-      <h1>Reveal</h1>
-      <p class="reveal-line">The word was:</p>
+      <h1>${T.revealTitle}</h1>
+      <p class="reveal-line">${T.wordWasLabel}</p>
       <p class="reveal-word">${state.secretWord}</p>
       <p class="reveal-line">${label}</p>
       <p class="reveal-imposter">${imposterList}</p>
 
-      <button id="new-round-btn" class="primary-btn">New Round, Same Players</button>
-      <button id="new-game-btn" class="secondary-btn">New Game</button>
+      <button id="new-round-btn" class="primary-btn">${T.newRoundBtn}</button>
+      <button id="new-game-btn" class="secondary-btn">${T.newGameBtn}</button>
     </div>
   `;
 
