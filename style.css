@@ -241,6 +241,13 @@ select#category-select {
   font-weight: 700;
 }
 
+.word-category {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
 .imposter-text {
   font-size: 1.8rem;
   font-weight: 700;
@@ -274,6 +281,14 @@ select#category-select {
   font-weight: 700;
   margin: 0 0 8px;
   color: var(--accent);
+}
+
+.reveal-category {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: -6px 0 16px;
 }
 
 .reveal-imposter {

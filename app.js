@@ -9,6 +9,7 @@ const state = {
   category: "all",
   playerNames: [],
   secretWord: "",
+  secretWordCategory: "",
   imposterIndexes: [],
   revealIndex: 0,
   cardRevealed: false,
@@ -19,8 +20,11 @@ const state = {
 const app = document.getElementById("app");
 
 function pickWord(categoryId) {
-  const pool = categoryId === "all" ? Object.values(WORDS).flat() : WORDS[categoryId];
-  return pool[Math.floor(Math.random() * pool.length)];
+  const entries =
+    categoryId === "all"
+      ? Object.entries(WORDS).flatMap(([id, words]) => words.map((word) => ({ word, categoryId: id })))
+      : WORDS[categoryId].map((word) => ({ word, categoryId }));
+  return entries[Math.floor(Math.random() * entries.length)];
 }
 
 function pickImposters(playerCount, imposterCount) {
@@ -42,7 +46,9 @@ function ensurePlayerNames() {
 }
 
 function startGame() {
-  state.secretWord = pickWord(state.category);
+  const picked = pickWord(state.category);
+  state.secretWord = picked.word;
+  state.secretWordCategory = picked.categoryId;
   state.imposterIndexes = pickImposters(state.players, state.imposters);
   state.revealIndex = 0;
   state.cardRevealed = false;
@@ -230,7 +236,7 @@ function renderReveal() {
         <div class="card-face card-back ${isImposter ? "imposter" : ""}">
           ${isImposter
             ? `<span class="imposter-text">${T.impostorLine1}<br>${T.impostorLine2}</span>`
-            : `<span class="word-label">${T.yourWordLabel}</span><span class="word-text">${state.secretWord}</span>`}
+            : `<span class="word-label">${T.yourWordLabel}</span><span class="word-text">${state.secretWord}</span><span class="word-category">${T.categories[state.secretWordCategory]}</span>`}
         </div>
       </div>
 
@@ -299,6 +305,7 @@ function renderResult() {
       <h1>${T.revealTitle}</h1>
       <p class="reveal-line">${T.wordWasLabel}</p>
       <p class="reveal-word">${state.secretWord}</p>
+      <p class="reveal-category">${T.categories[state.secretWordCategory]}</p>
       <p class="reveal-line">${label}</p>
       <p class="reveal-imposter">${imposterList}</p>
 
