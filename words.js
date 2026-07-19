@@ -1,4 +1,4 @@
-const CATEGORY_IDS = ["animals", "food", "jobs", "countries", "sports", "places", "objects", "movies", "brands"];
+const CATEGORY_IDS = ["animals", "food", "jobs", "countries", "sports", "places", "objects", "movies", "brands", "celebrities", "superheroes", "videogames", "characters"];
 
 const WORD_CATEGORIES_BY_LANG = {
   en: {
@@ -11,6 +11,10 @@ const WORD_CATEGORIES_BY_LANG = {
     objects: ["Umbrella", "Backpack", "Glasses", "Camera", "Bicycle", "Watch", "Thermos", "Keychain", "Headphones", "Wheelbarrow", "Fire Extinguisher", "Compass", "Flashlight", "Toothbrush", "Guitar"],
     movies: ["Titanic", "Jaws", "Frozen", "The Lion King", "Toy Story", "Finding Nemo", "Star Wars", "Jurassic Park", "The Matrix", "Home Alone", "Harry Potter", "Shrek", "Spider-Man", "Rocky", "Avatar"],
     brands: ["Nike", "Adidas", "Coca-Cola", "McDonald's", "Apple", "Samsung", "IKEA", "LEGO", "Spotify", "Netflix", "Google", "Amazon", "YouTube", "Instagram", "Volvo"],
+    celebrities: ["Beyoncé", "Taylor Swift", "Cristiano Ronaldo", "Lionel Messi", "Dwayne Johnson", "Rihanna", "Leonardo DiCaprio", "Ed Sheeran", "Lady Gaga", "Tom Hanks", "Serena Williams", "Adele", "Will Smith", "Emma Watson", "Keanu Reeves"],
+    superheroes: ["Superman", "Batman", "Spider-Man", "Iron Man", "Wonder Woman", "Hulk", "Thor", "Captain America", "Black Panther", "Wolverine", "Deadpool", "Aquaman", "Flash", "Catwoman", "Thanos"],
+    videogames: ["Minecraft", "Fortnite", "Tetris", "Pac-Man", "Super Mario", "Pokémon", "The Legend of Zelda", "Grand Theft Auto", "FIFA", "Call of Duty", "Roblox", "Sonic the Hedgehog", "Among Us", "Candy Crush", "League of Legends"],
+    characters: ["Mickey Mouse", "SpongeBob SquarePants", "Homer Simpson", "Bugs Bunny", "Winnie the Pooh", "Scooby-Doo", "Pikachu", "Donald Duck", "Tom and Jerry", "Peppa Pig", "Sherlock Holmes", "Garfield", "Kermit the Frog", "Woody", "Elsa"],
   },
   sv: {
     animals: ["Elefant", "Giraff", "Papegoja", "Krokodil", "Kanin", "Björn", "Delfin", "Örn", "Igelkott", "Zebra", "Känguru", "Räv", "Uggla", "Val", "Panda"],
@@ -22,6 +26,10 @@ const WORD_CATEGORIES_BY_LANG = {
     objects: ["Paraply", "Ryggsäck", "Glasögon", "Kamera", "Cykel", "Klocka", "Termos", "Nyckelknippa", "Hörlurar", "Skottkärra", "Brandsläckare", "Kompass", "Ficklampa", "Tandborste", "Gitarr"],
     movies: ["Titanic", "Hajen", "Frost", "Lejonkungen", "Toy Story", "Hitta Nemo", "Star Wars", "Jurassic Park", "Matrix", "Ensam hemma", "Harry Potter", "Shrek", "Spider-Man", "Rocky", "Avatar"],
     brands: ["Nike", "Adidas", "Coca-Cola", "McDonald's", "Apple", "Samsung", "IKEA", "LEGO", "Spotify", "Netflix", "Google", "Amazon", "YouTube", "Instagram", "Volvo"],
+    celebrities: ["Beyoncé", "Taylor Swift", "Cristiano Ronaldo", "Lionel Messi", "Dwayne Johnson", "Rihanna", "Leonardo DiCaprio", "Ed Sheeran", "Lady Gaga", "Tom Hanks", "Serena Williams", "Adele", "Will Smith", "Emma Watson", "Keanu Reeves"],
+    superheroes: ["Superman", "Batman", "Spider-Man", "Iron Man", "Wonder Woman", "Hulk", "Thor", "Captain America", "Black Panther", "Wolverine", "Deadpool", "Aquaman", "Flash", "Catwoman", "Thanos"],
+    videogames: ["Minecraft", "Fortnite", "Tetris", "Pac-Man", "Super Mario", "Pokémon", "The Legend of Zelda", "Grand Theft Auto", "FIFA", "Call of Duty", "Roblox", "Sonic the Hedgehog", "Among Us", "Candy Crush", "League of Legends"],
+    characters: ["Musse Pigg", "SpongeBob SquarePants", "Homer Simpson", "Bugs Bunny", "Nalle Puh", "Scooby-Doo", "Pikachu", "Kalle Anka", "Tom och Jerry", "Peppa Pig", "Sherlock Holmes", "Garfield", "Kermit the Frog", "Woody", "Elsa"],
   },
   no: {
     animals: ["Elefant", "Sjiraff", "Papegøye", "Krokodille", "Kanin", "Bjørn", "Delfin", "Ørn", "Pinnsvin", "Sebra", "Kenguru", "Rev", "Ugle", "Hval", "Panda"],
@@ -33,6 +41,10 @@ const WORD_CATEGORIES_BY_LANG = {
     objects: ["Paraply", "Ryggsekk", "Briller", "Kamera", "Sykkel", "Klokke", "Termos", "Nøkkelknippe", "Hodetelefoner", "Trillebår", "Brannslukningsapparat", "Kompass", "Lommelykt", "Tannbørste", "Gitar"],
     movies: ["Titanic", "Jaws", "Frost", "Løvenes konge", "Toy Story", "Oppdrag Nemo", "Star Wars", "Jurassic Park", "Matrix", "Alene hjemme", "Harry Potter", "Shrek", "Spider-Man", "Rocky", "Avatar"],
     brands: ["Nike", "Adidas", "Coca-Cola", "McDonald's", "Apple", "Samsung", "IKEA", "LEGO", "Spotify", "Netflix", "Google", "Amazon", "YouTube", "Instagram", "Volvo"],
+    celebrities: ["Beyoncé", "Taylor Swift", "Cristiano Ronaldo", "Lionel Messi", "Dwayne Johnson", "Rihanna", "Leonardo DiCaprio", "Ed Sheeran", "Lady Gaga", "Tom Hanks", "Serena Williams", "Adele", "Will Smith", "Emma Watson", "Keanu Reeves"],
+    superheroes: ["Superman", "Batman", "Spider-Man", "Iron Man", "Wonder Woman", "Hulk", "Thor", "Captain America", "Black Panther", "Wolverine", "Deadpool", "Aquaman", "Flash", "Catwoman", "Thanos"],
+    videogames: ["Minecraft", "Fortnite", "Tetris", "Pac-Man", "Super Mario", "Pokémon", "The Legend of Zelda", "Grand Theft Auto", "FIFA", "Call of Duty", "Roblox", "Sonic the Hedgehog", "Among Us", "Candy Crush", "League of Legends"],
+    characters: ["Mikke Mus", "SpongeBob SquarePants", "Homer Simpson", "Bugs Bunny", "Ole Brumm", "Scooby-Doo", "Pikachu", "Donald Duck", "Tom og Jerry", "Peppa Pig", "Sherlock Holmes", "Garfield", "Kermit the Frog", "Woody", "Elsa"],
   },
   da: {
     animals: ["Elefant", "Giraf", "Papegøje", "Krokodille", "Kanin", "Bjørn", "Delfin", "Ørn", "Pindsvin", "Zebra", "Kænguru", "Ræv", "Ugle", "Hval", "Panda"],
@@ -44,6 +56,10 @@ const WORD_CATEGORIES_BY_LANG = {
     objects: ["Paraply", "Rygsæk", "Briller", "Kamera", "Cykel", "Ur", "Termokande", "Nøglering", "Hovedtelefoner", "Trillebør", "Brandslukker", "Kompas", "Lommelygte", "Tandbørste", "Guitar"],
     movies: ["Titanic", "Jaws", "Frost", "Løvernes konge", "Toy Story", "Find Nemo", "Star Wars", "Jurassic Park", "Matrix", "Alene hjemme", "Harry Potter", "Shrek", "Spider-Man", "Rocky", "Avatar"],
     brands: ["Nike", "Adidas", "Coca-Cola", "McDonald's", "Apple", "Samsung", "IKEA", "LEGO", "Spotify", "Netflix", "Google", "Amazon", "YouTube", "Instagram", "Volvo"],
+    celebrities: ["Beyoncé", "Taylor Swift", "Cristiano Ronaldo", "Lionel Messi", "Dwayne Johnson", "Rihanna", "Leonardo DiCaprio", "Ed Sheeran", "Lady Gaga", "Tom Hanks", "Serena Williams", "Adele", "Will Smith", "Emma Watson", "Keanu Reeves"],
+    superheroes: ["Superman", "Batman", "Spider-Man", "Iron Man", "Wonder Woman", "Hulk", "Thor", "Captain America", "Black Panther", "Wolverine", "Deadpool", "Aquaman", "Flash", "Catwoman", "Thanos"],
+    videogames: ["Minecraft", "Fortnite", "Tetris", "Pac-Man", "Super Mario", "Pokémon", "The Legend of Zelda", "Grand Theft Auto", "FIFA", "Call of Duty", "Roblox", "Sonic the Hedgehog", "Among Us", "Candy Crush", "League of Legends"],
+    characters: ["Mickey Mouse", "SpongeBob SquarePants", "Homer Simpson", "Bugs Bunny", "Peter Plys", "Scooby-Doo", "Pikachu", "Anders And", "Tom og Jerry", "Peppa Pig", "Sherlock Holmes", "Garfield", "Kermit the Frog", "Woody", "Elsa"],
   },
   fi: {
     animals: ["Norsu", "Kirahvi", "Papukaija", "Krokotiili", "Kani", "Karhu", "Delfiini", "Kotka", "Siili", "Seepra", "Kenguru", "Kettu", "Pöllö", "Valas", "Panda"],
@@ -55,6 +71,10 @@ const WORD_CATEGORIES_BY_LANG = {
     objects: ["Sateenvarjo", "Reppu", "Silmälasit", "Kamera", "Polkupyörä", "Kello", "Termospullo", "Avaimenperä", "Kuulokkeet", "Kottikärry", "Sammutin", "Kompassi", "Taskulamppu", "Hammasharja", "Kitara"],
     movies: ["Titanic", "Jaws", "Frozen", "Leijonakuningas", "Toy Story", "Nemoa etsimässä", "Star Wars", "Jurassic Park", "Matrix", "Kotona yksin", "Harry Potter", "Shrek", "Spider-Man", "Rocky", "Avatar"],
     brands: ["Nike", "Adidas", "Coca-Cola", "McDonald's", "Apple", "Samsung", "IKEA", "LEGO", "Spotify", "Netflix", "Google", "Amazon", "YouTube", "Instagram", "Volvo"],
+    celebrities: ["Beyoncé", "Taylor Swift", "Cristiano Ronaldo", "Lionel Messi", "Dwayne Johnson", "Rihanna", "Leonardo DiCaprio", "Ed Sheeran", "Lady Gaga", "Tom Hanks", "Serena Williams", "Adele", "Will Smith", "Emma Watson", "Keanu Reeves"],
+    superheroes: ["Superman", "Batman", "Spider-Man", "Iron Man", "Wonder Woman", "Hulk", "Thor", "Captain America", "Black Panther", "Wolverine", "Deadpool", "Aquaman", "Flash", "Catwoman", "Thanos"],
+    videogames: ["Minecraft", "Fortnite", "Tetris", "Pac-Man", "Super Mario", "Pokémon", "The Legend of Zelda", "Grand Theft Auto", "FIFA", "Call of Duty", "Roblox", "Sonic the Hedgehog", "Among Us", "Candy Crush", "League of Legends"],
+    characters: ["Mikki Hiiri", "SpongeBob SquarePants", "Homer Simpson", "Bugs Bunny", "Nalle Puh", "Scooby-Doo", "Pikachu", "Aku Ankka", "Tom ja Jerry", "Peppa Pig", "Sherlock Holmes", "Garfield", "Kermit the Frog", "Woody", "Elsa"],
   },
   fr: {
     animals: ["Éléphant", "Girafe", "Perroquet", "Crocodile", "Lapin", "Ours", "Dauphin", "Aigle", "Hérisson", "Zèbre", "Kangourou", "Renard", "Hibou", "Baleine", "Panda"],
@@ -66,6 +86,10 @@ const WORD_CATEGORIES_BY_LANG = {
     objects: ["Parapluie", "Sac à dos", "Lunettes", "Appareil photo", "Vélo", "Montre", "Thermos", "Porte-clés", "Écouteurs", "Brouette", "Extincteur", "Boussole", "Lampe de poche", "Brosse à dents", "Guitare"],
     movies: ["Titanic", "Les Dents de la mer", "La Reine des Neiges", "Le Roi Lion", "Toy Story", "Le Monde de Nemo", "Star Wars", "Jurassic Park", "Matrix", "Maman, j'ai raté l'avion !", "Harry Potter", "Shrek", "Spider-Man", "Rocky", "Avatar"],
     brands: ["Nike", "Adidas", "Coca-Cola", "McDonald's", "Apple", "Samsung", "IKEA", "LEGO", "Spotify", "Netflix", "Google", "Amazon", "YouTube", "Instagram", "Volvo"],
+    celebrities: ["Beyoncé", "Taylor Swift", "Cristiano Ronaldo", "Lionel Messi", "Dwayne Johnson", "Rihanna", "Leonardo DiCaprio", "Ed Sheeran", "Lady Gaga", "Tom Hanks", "Serena Williams", "Adele", "Will Smith", "Emma Watson", "Keanu Reeves"],
+    superheroes: ["Superman", "Batman", "Spider-Man", "Iron Man", "Wonder Woman", "Hulk", "Thor", "Captain America", "Black Panther", "Wolverine", "Deadpool", "Aquaman", "Flash", "Catwoman", "Thanos"],
+    videogames: ["Minecraft", "Fortnite", "Tetris", "Pac-Man", "Super Mario", "Pokémon", "The Legend of Zelda", "Grand Theft Auto", "FIFA", "Call of Duty", "Roblox", "Sonic the Hedgehog", "Among Us", "Candy Crush", "League of Legends"],
+    characters: ["Mickey Mouse", "SpongeBob SquarePants", "Homer Simpson", "Bugs Bunny", "Winnie l'ourson", "Scooby-Doo", "Pikachu", "Donald Duck", "Tom et Jerry", "Peppa Pig", "Sherlock Holmes", "Garfield", "Kermit the Frog", "Woody", "Elsa"],
   },
   de: {
     animals: ["Elefant", "Giraffe", "Papagei", "Krokodil", "Kaninchen", "Bär", "Delfin", "Adler", "Igel", "Zebra", "Känguru", "Fuchs", "Eule", "Wal", "Panda"],
@@ -77,6 +101,10 @@ const WORD_CATEGORIES_BY_LANG = {
     objects: ["Regenschirm", "Rucksack", "Brille", "Kamera", "Fahrrad", "Uhr", "Thermoskanne", "Schlüsselbund", "Kopfhörer", "Schubkarre", "Feuerlöscher", "Kompass", "Taschenlampe", "Zahnbürste", "Gitarre"],
     movies: ["Titanic", "Der Weiße Hai", "Die Eiskönigin", "Der König der Löwen", "Toy Story", "Findet Nemo", "Star Wars", "Jurassic Park", "Matrix", "Kevin – Allein zu Haus", "Harry Potter", "Shrek", "Spider-Man", "Rocky", "Avatar"],
     brands: ["Nike", "Adidas", "Coca-Cola", "McDonald's", "Apple", "Samsung", "IKEA", "LEGO", "Spotify", "Netflix", "Google", "Amazon", "YouTube", "Instagram", "Volvo"],
+    celebrities: ["Beyoncé", "Taylor Swift", "Cristiano Ronaldo", "Lionel Messi", "Dwayne Johnson", "Rihanna", "Leonardo DiCaprio", "Ed Sheeran", "Lady Gaga", "Tom Hanks", "Serena Williams", "Adele", "Will Smith", "Emma Watson", "Keanu Reeves"],
+    superheroes: ["Superman", "Batman", "Spider-Man", "Iron Man", "Wonder Woman", "Hulk", "Thor", "Captain America", "Black Panther", "Wolverine", "Deadpool", "Aquaman", "Flash", "Catwoman", "Thanos"],
+    videogames: ["Minecraft", "Fortnite", "Tetris", "Pac-Man", "Super Mario", "Pokémon", "The Legend of Zelda", "Grand Theft Auto", "FIFA", "Call of Duty", "Roblox", "Sonic the Hedgehog", "Among Us", "Candy Crush", "League of Legends"],
+    characters: ["Micky Maus", "SpongeBob SquarePants", "Homer Simpson", "Bugs Bunny", "Winnie Puuh", "Scooby-Doo", "Pikachu", "Donald Duck", "Tom und Jerry", "Peppa Pig", "Sherlock Holmes", "Garfield", "Kermit the Frog", "Woody", "Elsa"],
   },
   es: {
     animals: ["Elefante", "Jirafa", "Loro", "Cocodrilo", "Conejo", "Oso", "Delfín", "Águila", "Erizo", "Cebra", "Canguro", "Zorro", "Búho", "Ballena", "Panda"],
@@ -88,5 +116,9 @@ const WORD_CATEGORIES_BY_LANG = {
     objects: ["Paraguas", "Mochila", "Gafas", "Cámara", "Bicicleta", "Reloj", "Termo", "Llavero", "Auriculares", "Carretilla", "Extintor", "Brújula", "Linterna", "Cepillo de dientes", "Guitarra"],
     movies: ["Titanic", "Tiburón", "Frozen", "El Rey León", "Toy Story", "Buscando a Nemo", "Star Wars", "Jurassic Park", "Matrix", "Solo en casa", "Harry Potter", "Shrek", "Spider-Man", "Rocky", "Avatar"],
     brands: ["Nike", "Adidas", "Coca-Cola", "McDonald's", "Apple", "Samsung", "IKEA", "LEGO", "Spotify", "Netflix", "Google", "Amazon", "YouTube", "Instagram", "Volvo"],
+    celebrities: ["Beyoncé", "Taylor Swift", "Cristiano Ronaldo", "Lionel Messi", "Dwayne Johnson", "Rihanna", "Leonardo DiCaprio", "Ed Sheeran", "Lady Gaga", "Tom Hanks", "Serena Williams", "Adele", "Will Smith", "Emma Watson", "Keanu Reeves"],
+    superheroes: ["Superman", "Batman", "Spider-Man", "Iron Man", "Wonder Woman", "Hulk", "Thor", "Captain America", "Black Panther", "Wolverine", "Deadpool", "Aquaman", "Flash", "Catwoman", "Thanos"],
+    videogames: ["Minecraft", "Fortnite", "Tetris", "Pac-Man", "Super Mario", "Pokémon", "The Legend of Zelda", "Grand Theft Auto", "FIFA", "Call of Duty", "Roblox", "Sonic the Hedgehog", "Among Us", "Candy Crush", "League of Legends"],
+    characters: ["Mickey Mouse", "SpongeBob SquarePants", "Homer Simpson", "Bugs Bunny", "Winnie Pooh", "Scooby-Doo", "Pikachu", "Pato Donald", "Tom y Jerry", "Peppa Pig", "Sherlock Holmes", "Garfield", "Kermit the Frog", "Woody", "Elsa"],
   },
 };
