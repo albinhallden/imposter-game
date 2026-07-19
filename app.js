@@ -135,7 +135,7 @@ function renderSetup() {
   app.innerHTML = `
     <div class="screen setup-screen">
       ${languageSwitcherHtml()}
-      <h1>Imposter</h1>
+      <h1>${T.appTitle}</h1>
       <p class="subtitle">${T.subtitleSetup}</p>
 
       <label class="field">

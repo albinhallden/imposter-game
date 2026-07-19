@@ -4,6 +4,7 @@ const TRANSLATIONS = {
   en: {
     nativeName: "English",
     flag: "🇬🇧",
+    appTitle: "Imposter",
     subtitleSetup: "Pass the phone around. Everyone except the impostor gets a secret word.",
     playersLabel: "Number of players",
     impostersLabel: "Number of impostors",
@@ -47,6 +48,7 @@ const TRANSLATIONS = {
   sv: {
     nativeName: "Svenska",
     flag: "🇸🇪",
+    appTitle: "Imposter - Bedragare",
     subtitleSetup: "Skicka runt telefonen. Alla utom impostern får ett hemligt ord.",
     playersLabel: "Antal spelare",
     impostersLabel: "Antal impostrar",
@@ -90,6 +92,7 @@ const TRANSLATIONS = {
   no: {
     nativeName: "Norsk",
     flag: "🇳🇴",
+    appTitle: "Imposter - Bedrageren",
     subtitleSetup: "Send telefonen rundt. Alle unntatt bedrageren får et hemmelig ord.",
     playersLabel: "Antall spillere",
     impostersLabel: "Antall bedragere",
@@ -133,6 +136,7 @@ const TRANSLATIONS = {
   da: {
     nativeName: "Dansk",
     flag: "🇩🇰",
+    appTitle: "Imposter - Bedrageren",
     subtitleSetup: "Send telefonen rundt. Alle undtagen bedrageren får et hemmeligt ord.",
     playersLabel: "Antal spillere",
     impostersLabel: "Antal bedragere",
@@ -176,6 +180,7 @@ const TRANSLATIONS = {
   fi: {
     nativeName: "Suomi",
     flag: "🇫🇮",
+    appTitle: "Imposter - Huijari",
     subtitleSetup: "Anna puhelin kiertää. Kaikki paitsi huijari saavat salaisen sanan.",
     playersLabel: "Pelaajien määrä",
     impostersLabel: "Huijareiden määrä",
@@ -219,6 +224,7 @@ const TRANSLATIONS = {
   fr: {
     nativeName: "Français",
     flag: "🇫🇷",
+    appTitle: "Imposter - L'Imposteur",
     subtitleSetup: "Faites circuler le téléphone. Tout le monde sauf l'imposteur reçoit un mot secret.",
     playersLabel: "Nombre de joueurs",
     impostersLabel: "Nombre d'imposteurs",
@@ -262,6 +268,7 @@ const TRANSLATIONS = {
   de: {
     nativeName: "Deutsch",
     flag: "🇩🇪",
+    appTitle: "Imposter - Der Betrüger",
     subtitleSetup: "Gebt das Handy herum. Alle außer dem Betrüger bekommen ein geheimes Wort.",
     playersLabel: "Anzahl der Spieler",
     impostersLabel: "Anzahl der Betrüger",
@@ -305,6 +312,7 @@ const TRANSLATIONS = {
   es: {
     nativeName: "Español",
     flag: "🇪🇸",
+    appTitle: "Imposter - El Impostor",
     subtitleSetup: "Pasen el teléfono. Todos excepto el impostor reciben una palabra secreta.",
     playersLabel: "Número de jugadores",
     impostersLabel: "Número de impostores",
