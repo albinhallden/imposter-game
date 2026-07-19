@@ -1,0 +1,262 @@
+:root {
+  --bg: #14151a;
+  --surface: #1e2028;
+  --surface-2: #262933;
+  --accent: #6c5ce7;
+  --accent-2: #ff6b6b;
+  --text: #f2f2f7;
+  --text-dim: #9a9ba5;
+  --radius: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 16px;
+}
+
+#app {
+  width: 100%;
+  max-width: 420px;
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 0 0 4px;
+}
+
+.subtitle {
+  color: var(--text-dim);
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: var(--text-dim);
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.stepper span {
+  font-size: 1.6rem;
+  color: var(--text);
+  min-width: 2ch;
+}
+
+.step-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.step-btn:active {
+  background: var(--accent);
+}
+
+select#category-select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 16px;
+  border-radius: 14px;
+  border: none;
+  background: var(--accent);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.primary-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.secondary-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid var(--surface-2);
+  background: transparent;
+  color: var(--text);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.name-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 50vh;
+  overflow-y: auto;
+  padding: 4px 2px;
+}
+
+.name-field {
+  align-items: stretch;
+  gap: 6px;
+  text-align: left;
+}
+
+.name-input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.pass-label {
+  color: var(--text-dim);
+  margin: 0;
+  font-size: 1rem;
+}
+
+.card {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  perspective: 1000px;
+  cursor: pointer;
+  margin: 12px 0;
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  backface-visibility: hidden;
+  transition: transform 0.5s;
+}
+
+.card-front {
+  background: linear-gradient(145deg, var(--surface), var(--surface-2));
+  color: var(--text-dim);
+  font-size: 1.1rem;
+  transform: rotateY(0deg);
+}
+
+.card-back {
+  background: linear-gradient(145deg, var(--accent), #5142c4);
+  transform: rotateY(180deg);
+  padding: 20px;
+}
+
+.card-back.imposter {
+  background: linear-gradient(145deg, var(--accent-2), #c73e3e);
+}
+
+.card.revealed .card-front {
+  transform: rotateY(-180deg);
+}
+
+.card.revealed .card-back {
+  transform: rotateY(0deg);
+}
+
+.word-label {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.word-text {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.imposter-text {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.timer-display {
+  font-size: 3rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  margin: 4px 0;
+}
+
+.timer-buttons {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.timer-buttons .timer-btn {
+  flex: 1;
+}
+
+.reveal-line {
+  color: var(--text-dim);
+  margin: 4px 0 0;
+}
+
+.reveal-word {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: var(--accent);
+}
+
+.reveal-imposter {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: var(--accent-2);
+}
