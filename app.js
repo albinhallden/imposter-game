@@ -11,6 +11,7 @@ const state = {
   secretWord: "",
   secretWordCategory: "",
   imposterIndexes: [],
+  starterIndex: 0,
   revealIndex: 0,
   cardRevealed: false,
   timerSeconds: 0,
@@ -18,6 +19,15 @@ const state = {
 };
 
 const app = document.getElementById("app");
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
 
 function pickWord(categoryId) {
   const entries =
@@ -50,6 +60,7 @@ function startGame() {
   state.secretWord = picked.word;
   state.secretWordCategory = picked.categoryId;
   state.imposterIndexes = pickImposters(state.players, state.imposters);
+  state.starterIndex = Math.floor(Math.random() * state.players);
   state.revealIndex = 0;
   state.cardRevealed = false;
   state.screen = "reveal";
@@ -101,6 +112,7 @@ function renderTimerOnly() {
 
 function render() {
   if (state.screen === "setup") renderSetup();
+  else if (state.screen === "howto") renderHowToPlay();
   else if (state.screen === "names") renderNames();
   else if (state.screen === "reveal") renderReveal();
   else if (state.screen === "discuss") renderDiscuss();
@@ -150,6 +162,7 @@ function renderSetup() {
       </label>
 
       <button id="start-btn" class="primary-btn">${T.continueBtn}</button>
+      <button id="how-to-play-btn" class="secondary-btn">${T.howToPlayBtn}</button>
     </div>
   `;
 
@@ -178,6 +191,27 @@ function renderSetup() {
     state.screen = "names";
     render();
   };
+  document.getElementById("how-to-play-btn").onclick = () => {
+    state.screen = "howto";
+    render();
+  };
+}
+
+function renderHowToPlay() {
+  const steps = T.howToPlaySteps.map((step) => `<li>${step}</li>`).join("");
+
+  app.innerHTML = `
+    <div class="screen howto-screen">
+      <h1>${T.howToPlayTitle}</h1>
+      <ol class="howto-steps">${steps}</ol>
+      <button id="howto-back-btn" class="primary-btn">${T.backBtn}</button>
+    </div>
+  `;
+
+  document.getElementById("howto-back-btn").onclick = () => {
+    state.screen = "setup";
+    render();
+  };
 }
 
 function maxImposters() {
@@ -190,7 +224,7 @@ function renderNames() {
       (name, i) => `
         <label class="field name-field">
           ${T.playerWord} ${i + 1}
-          <input type="text" class="name-input" data-index="${i}" value="${name.replace(/"/g, "&quot;")}" maxlength="20">
+          <input type="text" class="name-input" data-index="${i}" value="${escapeHtml(name)}" maxlength="20">
         </label>
       `
     )
@@ -227,7 +261,7 @@ function renderReveal() {
   app.innerHTML = `
     <div class="screen reveal-screen">
       <p class="pass-label">${T.passLabel}</p>
-      <h1>${playerName}</h1>
+      <h1>${escapeHtml(playerName)}</h1>
 
       <div id="card" class="card ${state.cardRevealed ? "revealed" : ""}">
         <div class="card-face card-front">
@@ -265,10 +299,14 @@ function renderReveal() {
 }
 
 function renderDiscuss() {
+  const starterName = state.playerNames[state.starterIndex] || `${T.playerWord} ${state.starterIndex + 1}`;
+
   app.innerHTML = `
     <div class="screen discuss-screen">
       <h1>${T.discussTitle}</h1>
       <p class="subtitle">${T.discussSubtitle}</p>
+      <p class="starter-label">${T.starterLabel}</p>
+      <p class="starter-name">${escapeHtml(starterName)}</p>
 
       <div id="timer-display" class="timer-display">${formatTime(state.timerSeconds)}</div>
 
@@ -296,7 +334,7 @@ function renderResult() {
   const imposterList = state.imposterIndexes
     .slice()
     .sort((a, b) => a - b)
-    .map((i) => state.playerNames[i] || `${T.playerWord} ${i + 1}`)
+    .map((i) => escapeHtml(state.playerNames[i] || `${T.playerWord} ${i + 1}`))
     .join(", ");
   const label = state.imposterIndexes.length > 1 ? T.impostorsWereLabel : T.impostorWasLabel;
 
