@@ -31,7 +31,7 @@ const TRANSLATIONS = {
     impostorsWereLabel: "The impostors were:",
     newRoundBtn: "New Round, Same Players",
     newGameBtn: "New Game",
-    categories: { animals: "Animals", food: "Food", jobs: "Jobs", countries: "Countries", sports: "Sports", places: "Places", objects: "Objects", all: "All" },
+    categories: { animals: "Animals", food: "Food", jobs: "Jobs", countries: "Countries", sports: "Sports", places: "Places", objects: "Objects", movies: "Movies", brands: "Brands", all: "All" },
   },
   sv: {
     nativeName: "Svenska",
@@ -63,7 +63,7 @@ const TRANSLATIONS = {
     impostorsWereLabel: "Impostrarna var:",
     newRoundBtn: "Nytt varv, samma spelare",
     newGameBtn: "Ny match",
-    categories: { animals: "Djur", food: "Mat", jobs: "Yrken", countries: "Länder", sports: "Sport", places: "Platser", objects: "Föremål", all: "Alla" },
+    categories: { animals: "Djur", food: "Mat", jobs: "Yrken", countries: "Länder", sports: "Sport", places: "Platser", objects: "Föremål", movies: "Filmer", brands: "Märken", all: "Alla" },
   },
   no: {
     nativeName: "Norsk",
@@ -95,7 +95,7 @@ const TRANSLATIONS = {
     impostorsWereLabel: "Bedragerne var:",
     newRoundBtn: "Ny runde, samme spillere",
     newGameBtn: "Nytt spill",
-    categories: { animals: "Dyr", food: "Mat", jobs: "Yrker", countries: "Land", sports: "Sport", places: "Steder", objects: "Gjenstander", all: "Alle" },
+    categories: { animals: "Dyr", food: "Mat", jobs: "Yrker", countries: "Land", sports: "Sport", places: "Steder", objects: "Gjenstander", movies: "Filmer", brands: "Merker", all: "Alle" },
   },
   da: {
     nativeName: "Dansk",
@@ -127,7 +127,7 @@ const TRANSLATIONS = {
     impostorsWereLabel: "Bedragerne var:",
     newRoundBtn: "Ny runde, samme spillere",
     newGameBtn: "Nyt spil",
-    categories: { animals: "Dyr", food: "Mad", jobs: "Job", countries: "Lande", sports: "Sport", places: "Steder", objects: "Genstande", all: "Alle" },
+    categories: { animals: "Dyr", food: "Mad", jobs: "Job", countries: "Lande", sports: "Sport", places: "Steder", objects: "Genstande", movies: "Film", brands: "Mærker", all: "Alle" },
   },
   fi: {
     nativeName: "Suomi",
@@ -159,7 +159,7 @@ const TRANSLATIONS = {
     impostorsWereLabel: "Huijarit olivat:",
     newRoundBtn: "Uusi kierros, samat pelaajat",
     newGameBtn: "Uusi peli",
-    categories: { animals: "Eläimet", food: "Ruoka", jobs: "Ammatit", countries: "Maat", sports: "Urheilu", places: "Paikat", objects: "Esineet", all: "Kaikki" },
+    categories: { animals: "Eläimet", food: "Ruoka", jobs: "Ammatit", countries: "Maat", sports: "Urheilu", places: "Paikat", objects: "Esineet", movies: "Elokuvat", brands: "Merkit", all: "Kaikki" },
   },
   fr: {
     nativeName: "Français",
@@ -191,7 +191,7 @@ const TRANSLATIONS = {
     impostorsWereLabel: "Les imposteurs étaient :",
     newRoundBtn: "Nouvelle manche, mêmes joueurs",
     newGameBtn: "Nouvelle partie",
-    categories: { animals: "Animaux", food: "Nourriture", jobs: "Métiers", countries: "Pays", sports: "Sports", places: "Lieux", objects: "Objets", all: "Tous" },
+    categories: { animals: "Animaux", food: "Nourriture", jobs: "Métiers", countries: "Pays", sports: "Sports", places: "Lieux", objects: "Objets", movies: "Films", brands: "Marques", all: "Tous" },
   },
   de: {
     nativeName: "Deutsch",
@@ -223,7 +223,7 @@ const TRANSLATIONS = {
     impostorsWereLabel: "Die Betrüger waren:",
     newRoundBtn: "Neue Runde, gleiche Spieler",
     newGameBtn: "Neues Spiel",
-    categories: { animals: "Tiere", food: "Essen", jobs: "Berufe", countries: "Länder", sports: "Sport", places: "Orte", objects: "Gegenstände", all: "Alle" },
+    categories: { animals: "Tiere", food: "Essen", jobs: "Berufe", countries: "Länder", sports: "Sport", places: "Orte", objects: "Gegenstände", movies: "Filme", brands: "Marken", all: "Alle" },
   },
   es: {
     nativeName: "Español",
@@ -255,6 +255,6 @@ const TRANSLATIONS = {
     impostorsWereLabel: "Los impostores eran:",
     newRoundBtn: "Nueva ronda, mismos jugadores",
     newGameBtn: "Nueva partida",
-    categories: { animals: "Animales", food: "Comida", jobs: "Trabajos", countries: "Países", sports: "Deportes", places: "Lugares", objects: "Objetos", all: "Todos" },
+    categories: { animals: "Animales", food: "Comida", jobs: "Trabajos", countries: "Países", sports: "Deportes", places: "Lugares", objects: "Objetos", movies: "Películas", brands: "Marcas", all: "Todos" },
   },
 };
