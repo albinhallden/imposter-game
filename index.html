@@ -3,10 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Imposter</title>
-<script>window.location.replace("/en/" + window.location.search);</script>
+<title>Imposter – Free Party Word Game for Groups</title>
+<meta name="description" content="Play Imposter free online: pass one phone around a group and everyone gets a secret word except the imposter. Available in English, Svenska, Norsk, Dansk, Suomi, Français, Deutsch, and Español.">
+<link rel="canonical" href="https://imposter.aibin.tech/en/">
+<link rel="alternate" hreflang="en" href="https://imposter.aibin.tech/en/">
+<link rel="alternate" hreflang="sv" href="https://imposter.aibin.tech/sv/">
+<link rel="alternate" hreflang="no" href="https://imposter.aibin.tech/no/">
+<link rel="alternate" hreflang="da" href="https://imposter.aibin.tech/da/">
+<link rel="alternate" hreflang="fi" href="https://imposter.aibin.tech/fi/">
+<link rel="alternate" hreflang="fr" href="https://imposter.aibin.tech/fr/">
+<link rel="alternate" hreflang="de" href="https://imposter.aibin.tech/de/">
+<link rel="alternate" hreflang="es" href="https://imposter.aibin.tech/es/">
+<link rel="alternate" hreflang="x-default" href="https://imposter.aibin.tech/en/">
+<script>
+(function () {
+  var supported = ["en", "sv", "no", "da", "fi", "fr", "de", "es"];
+  var langs = navigator.languages || [navigator.language || "en"];
+  var target = "en";
+  for (var i = 0; i < langs.length; i++) {
+    var code = String(langs[i]).slice(0, 2).toLowerCase();
+    if (supported.indexOf(code) !== -1) {
+      target = code;
+      break;
+    }
+  }
+  window.location.replace("/" + target + "/" + window.location.search);
+})();
+</script>
 </head>
 <body>
-<p><a href="/en/">Continue to Imposter</a></p>
+<noscript>
+  <p>Imposter is a party word game. Choose your language:</p>
+  <ul>
+    <li><a href="/en/">English</a></li>
+    <li><a href="/sv/">Svenska</a></li>
+    <li><a href="/no/">Norsk</a></li>
+    <li><a href="/da/">Dansk</a></li>
+    <li><a href="/fi/">Suomi</a></li>
+    <li><a href="/fr/">Français</a></li>
+    <li><a href="/de/">Deutsch</a></li>
+    <li><a href="/es/">Español</a></li>
+  </ul>
+</noscript>
 </body>
 </html>
