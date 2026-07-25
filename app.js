@@ -1,6 +1,7 @@
 const LANG = typeof window.LANG === "string" && TRANSLATIONS[window.LANG] ? window.LANG : "en";
 const T = TRANSLATIONS[LANG];
 const WORDS = WORD_CATEGORIES_BY_LANG[LANG];
+const ISSUES_URL = "https://github.com/albinhallden/imposter-game/issues";
 
 const state = {
   screen: "setup",
@@ -181,6 +182,7 @@ function renderSetup() {
 
       <button id="start-btn" class="primary-btn">${T.continueBtn}</button>
       <button id="how-to-play-btn" class="secondary-btn">${T.howToPlayBtn}</button>
+      <a class="report-bug-link" href="${ISSUES_URL}" target="_blank" rel="noopener noreferrer">${T.reportBugLink}</a>
     </div>
   `;
 

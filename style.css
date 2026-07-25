@@ -64,6 +64,13 @@ body {
   color: white;
 }
 
+.report-bug-link {
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  text-decoration: underline;
+  margin-top: 4px;
+}
+
 h1 {
   font-size: 2rem;
   margin: 0 0 4px;

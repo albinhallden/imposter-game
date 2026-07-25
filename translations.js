@@ -11,6 +11,7 @@ const TRANSLATIONS = {
     categoryLabel: "Category",
     continueBtn: "Continue",
     howToPlayBtn: "How to Play",
+    reportBugLink: "Report a Bug",
     howToPlayTitle: "How to Play",
     howToPlaySteps: [
       "Choose the number of players, impostors, and a word category.",
@@ -59,6 +60,7 @@ const TRANSLATIONS = {
     categoryLabel: "Kategori",
     continueBtn: "Fortsätt",
     howToPlayBtn: "Så spelar du",
+    reportBugLink: "Rapportera ett fel",
     howToPlayTitle: "Så spelar du",
     howToPlaySteps: [
       "Välj antal spelare, antal impostrar och en ordkategori.",
@@ -107,6 +109,7 @@ const TRANSLATIONS = {
     categoryLabel: "Kategori",
     continueBtn: "Fortsett",
     howToPlayBtn: "Slik spiller du",
+    reportBugLink: "Rapporter en feil",
     howToPlayTitle: "Slik spiller du",
     howToPlaySteps: [
       "Velg antall spillere, antall bedragere og en ordkategori.",
@@ -155,6 +158,7 @@ const TRANSLATIONS = {
     categoryLabel: "Kategori",
     continueBtn: "Fortsæt",
     howToPlayBtn: "Sådan spiller du",
+    reportBugLink: "Rapporter en fejl",
     howToPlayTitle: "Sådan spiller du",
     howToPlaySteps: [
       "Vælg antal spillere, antal bedragere og en ordkategori.",
@@ -203,6 +207,7 @@ const TRANSLATIONS = {
     categoryLabel: "Kategoria",
     continueBtn: "Jatka",
     howToPlayBtn: "Näin pelataan",
+    reportBugLink: "Ilmoita virheestä",
     howToPlayTitle: "Näin pelataan",
     howToPlaySteps: [
       "Valitse pelaajien määrä, huijareiden määrä ja sanakategoria.",
@@ -251,6 +256,7 @@ const TRANSLATIONS = {
     categoryLabel: "Catégorie",
     continueBtn: "Continuer",
     howToPlayBtn: "Comment jouer",
+    reportBugLink: "Signaler un bug",
     howToPlayTitle: "Comment jouer",
     howToPlaySteps: [
       "Choisissez le nombre de joueurs, d'imposteurs et une catégorie de mots.",
@@ -299,6 +305,7 @@ const TRANSLATIONS = {
     categoryLabel: "Kategorie",
     continueBtn: "Weiter",
     howToPlayBtn: "So wird gespielt",
+    reportBugLink: "Fehler melden",
     howToPlayTitle: "So wird gespielt",
     howToPlaySteps: [
       "Wählt die Anzahl der Spieler, der Betrüger und eine Wortkategorie.",
@@ -347,6 +354,7 @@ const TRANSLATIONS = {
     categoryLabel: "Categoría",
     continueBtn: "Continuar",
     howToPlayBtn: "Cómo jugar",
+    reportBugLink: "Reportar un error",
     howToPlayTitle: "Cómo jugar",
     howToPlaySteps: [
       "Elige el número de jugadores, impostores y una categoría de palabras.",
