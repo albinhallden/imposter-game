@@ -4,7 +4,7 @@ A free, mobile-friendly party word game you play by passing a single phone aroun
 
 ## How it works
 
-1. Set the number of players, how many imposters, and a word category (or "All").
+1. Set how many imposters and a word category (or "All"), then add, remove, rename, and reorder players.
 2. Pass the phone around. Each player taps to reveal their card — everyone sees the secret word except the imposter(s), who see a "You are the imposter" card instead.
 3. Going around the group (starting with a randomly chosen player), everyone says one word describing the secret word without saying the word itself.
 4. Discuss and vote on who you think the imposter is, using the built-in round timer if you like.
@@ -15,7 +15,7 @@ A free, mobile-friendly party word game you play by passing a single phone aroun
 - 13 word categories (animals, food, jobs, countries, sports, places, objects, movies, brands, celebrities, superheroes, video games, cartoon characters), each with 15 words per language
 - 8 languages: English, Svenska, Norsk, Dansk, Suomi, Français, Deutsch, Español, each served from its own route (`/en/`, `/sv/`, etc.) with automatic browser-language detection on first visit
 - Support for multiple imposters per round
-- Custom player names
+- A player list with add, remove, rename, and reorder controls (3–20 players)
 - A discussion timer with a randomly chosen starting player
 - A "How to Play" screen
 - No build step, no backend, no dependencies — plain HTML/CSS/JS

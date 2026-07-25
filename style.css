@@ -162,20 +162,76 @@ select#category-select {
   padding: 4px 2px;
 }
 
-.name-field {
-  align-items: stretch;
-  gap: 6px;
-  text-align: left;
+.player-count {
+  color: var(--text-dim);
+  margin: -6px 0 0;
+  font-size: 0.9rem;
+}
+
+.name-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.row-num {
+  min-width: 1.5ch;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  text-align: right;
 }
 
 .name-input {
-  width: 100%;
+  flex: 1;
+  min-width: 0;
   padding: 12px;
   border-radius: 12px;
   border: none;
   background: var(--surface-2);
   color: var(--text);
   font-size: 1rem;
+}
+
+.reorder-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.icon-btn {
+  border: none;
+  background: var(--surface-2);
+  color: var(--text);
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-btn:active {
+  background: var(--accent);
+}
+
+.icon-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  background: var(--surface-2);
+}
+
+.reorder-btns .icon-btn {
+  width: 30px;
+  height: 19px;
+  font-size: 0.65rem;
+}
+
+.remove-player-btn {
+  width: 40px;
+  height: 40px;
+  font-size: 1.4rem;
+  flex-shrink: 0;
 }
 
 .howto-steps {

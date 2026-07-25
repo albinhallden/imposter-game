@@ -55,6 +55,33 @@ function ensurePlayerNames() {
   state.playerNames = result;
 }
 
+function syncPlayerCount() {
+  state.players = state.playerNames.length;
+  state.imposters = Math.min(state.imposters, maxImposters());
+}
+
+function addPlayer() {
+  if (state.playerNames.length >= 20) return;
+  state.playerNames.push(`${T.playerWord} ${state.playerNames.length + 1}`);
+  syncPlayerCount();
+  renderNames();
+}
+
+function removePlayer(index) {
+  if (state.playerNames.length <= 3) return;
+  state.playerNames.splice(index, 1);
+  syncPlayerCount();
+  renderNames();
+}
+
+function movePlayer(index, direction) {
+  const target = index + direction;
+  if (target < 0 || target >= state.playerNames.length) return;
+  const names = state.playerNames;
+  [names[index], names[target]] = [names[target], names[index]];
+  renderNames();
+}
+
 function startGame() {
   const picked = pickWord(state.category);
   state.secretWord = picked.word;
@@ -139,15 +166,6 @@ function renderSetup() {
       <p class="subtitle">${T.subtitleSetup}</p>
 
       <label class="field">
-        ${T.playersLabel}
-        <div class="stepper">
-          <button id="players-minus" class="step-btn">−</button>
-          <span id="players-value">${state.players}</span>
-          <button id="players-plus" class="step-btn">+</button>
-        </div>
-      </label>
-
-      <label class="field">
         ${T.impostersLabel}
         <div class="stepper">
           <button id="imposters-minus" class="step-btn">−</button>
@@ -166,15 +184,6 @@ function renderSetup() {
     </div>
   `;
 
-  document.getElementById("players-minus").onclick = () => {
-    state.players = Math.max(3, state.players - 1);
-    state.imposters = Math.min(state.imposters, maxImposters());
-    renderSetup();
-  };
-  document.getElementById("players-plus").onclick = () => {
-    state.players = Math.min(20, state.players + 1);
-    renderSetup();
-  };
   document.getElementById("imposters-minus").onclick = () => {
     state.imposters = Math.max(1, state.imposters - 1);
     renderSetup();
@@ -219,13 +228,19 @@ function maxImposters() {
 }
 
 function renderNames() {
-  const inputs = state.playerNames
+  const count = state.playerNames.length;
+  const rows = state.playerNames
     .map(
       (name, i) => `
-        <label class="field name-field">
-          ${T.playerWord} ${i + 1}
-          <input type="text" class="name-input" data-index="${i}" value="${escapeHtml(name)}" maxlength="20">
-        </label>
+        <div class="name-row">
+          <span class="row-num">${i + 1}</span>
+          <input type="text" class="name-input" data-index="${i}" value="${escapeHtml(name)}" maxlength="20" aria-label="${T.playerWord} ${i + 1}">
+          <div class="reorder-btns">
+            <button class="icon-btn move-up-btn" data-index="${i}" aria-label="${T.moveUpAria}" ${i === 0 ? "disabled" : ""}>&#9650;</button>
+            <button class="icon-btn move-down-btn" data-index="${i}" aria-label="${T.moveDownAria}" ${i === count - 1 ? "disabled" : ""}>&#9660;</button>
+          </div>
+          <button class="icon-btn remove-player-btn" data-index="${i}" aria-label="${T.removePlayerAria}" ${count <= 3 ? "disabled" : ""}>&times;</button>
+        </div>
       `
     )
     .join("");
@@ -234,7 +249,9 @@ function renderNames() {
     <div class="screen names-screen">
       <h1>${T.namesTitle}</h1>
       <p class="subtitle">${T.namesSubtitle}</p>
-      <div class="name-list">${inputs}</div>
+      <p class="player-count">${T.playersLabel}: ${count}/20</p>
+      <div class="name-list">${rows}</div>
+      <button id="add-player-btn" class="secondary-btn" ${count >= 20 ? "disabled" : ""}>+ ${T.addPlayerBtn}</button>
       <button id="start-game-btn" class="primary-btn">${T.startGameBtn}</button>
       <button id="back-btn" class="secondary-btn">${T.backBtn}</button>
     </div>
@@ -246,7 +263,20 @@ function renderNames() {
       state.playerNames[i] = e.target.value.trim() || `${T.playerWord} ${i + 1}`;
     };
   });
-  document.getElementById("start-game-btn").onclick = startGame;
+  document.querySelectorAll(".move-up-btn").forEach((btn) => {
+    btn.onclick = () => movePlayer(Number(btn.dataset.index), -1);
+  });
+  document.querySelectorAll(".move-down-btn").forEach((btn) => {
+    btn.onclick = () => movePlayer(Number(btn.dataset.index), 1);
+  });
+  document.querySelectorAll(".remove-player-btn").forEach((btn) => {
+    btn.onclick = () => removePlayer(Number(btn.dataset.index));
+  });
+  document.getElementById("add-player-btn").onclick = addPlayer;
+  document.getElementById("start-game-btn").onclick = () => {
+    syncPlayerCount();
+    startGame();
+  };
   document.getElementById("back-btn").onclick = () => {
     state.screen = "setup";
     render();
