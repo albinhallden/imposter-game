@@ -132,15 +132,6 @@ function renderSetup() {
       <p class="subtitle">${T.subtitleSetup}</p>
 
       <label class="field">
-        ${T.impostersLabel}
-        <div class="stepper">
-          <button id="imposters-minus" class="step-btn">−</button>
-          <span id="imposters-value">${state.imposters}</span>
-          <button id="imposters-plus" class="step-btn">+</button>
-        </div>
-      </label>
-
-      <label class="field">
         ${T.categoryLabel}
         <select id="category-select">${categoryOptions}</select>
       </label>
@@ -151,14 +142,6 @@ function renderSetup() {
     </div>
   `;
 
-  document.getElementById("imposters-minus").onclick = () => {
-    state.imposters = Math.max(1, state.imposters - 1);
-    renderSetup();
-  };
-  document.getElementById("imposters-plus").onclick = () => {
-    state.imposters = Math.min(maxImposters(), state.imposters + 1);
-    renderSetup();
-  };
   document.getElementById("category-select").onchange = (e) => {
     state.category = e.target.value;
   };
@@ -217,6 +200,16 @@ function renderNames() {
       <h1>${T.namesTitle}</h1>
       <p class="subtitle">${T.namesSubtitle}</p>
       <p class="player-count">${T.playersLabel}: ${count}/20</p>
+
+      <label class="field">
+        ${T.impostersLabel}
+        <div class="stepper">
+          <button id="imposters-minus" class="step-btn">−</button>
+          <span id="imposters-value">${state.imposters}</span>
+          <button id="imposters-plus" class="step-btn">+</button>
+        </div>
+      </label>
+
       <div class="name-list">${rows}</div>
       <button id="add-player-btn" class="secondary-btn" ${count >= 20 ? "disabled" : ""}>+ ${T.addPlayerBtn}</button>
       <button id="start-game-btn" class="primary-btn">${T.startGameBtn}</button>
@@ -224,6 +217,14 @@ function renderNames() {
     </div>
   `;
 
+  document.getElementById("imposters-minus").onclick = () => {
+    state.imposters = Math.max(1, state.imposters - 1);
+    renderNames();
+  };
+  document.getElementById("imposters-plus").onclick = () => {
+    state.imposters = Math.min(maxImposters(), state.imposters + 1);
+    renderNames();
+  };
   document.querySelectorAll(".name-input").forEach((input) => {
     input.oninput = (e) => {
       const i = Number(e.target.dataset.index);
