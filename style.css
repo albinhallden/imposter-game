@@ -346,23 +346,6 @@ select#category-select {
   margin: -8px 0 0;
 }
 
-.timer-display {
-  font-size: 3rem;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  margin: 4px 0;
-}
-
-.timer-buttons {
-  display: flex;
-  gap: 10px;
-  width: 100%;
-}
-
-.timer-buttons .timer-btn {
-  flex: 1;
-}
-
 .reveal-line {
   color: var(--text-dim);
   margin: 4px 0 0;

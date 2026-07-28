@@ -15,8 +15,7 @@ const state = {
   starterIndex: 0,
   revealIndex: 0,
   cardRevealed: false,
-  timerSeconds: 0,
-  timerHandle: null,
+
 };
 
 const app = document.getElementById("app");
@@ -100,42 +99,8 @@ function newRound() {
 }
 
 function newGame() {
-  stopTimer();
-  state.timerSeconds = 0;
   state.screen = "setup";
   render();
-}
-
-function stopTimer() {
-  if (state.timerHandle) {
-    clearInterval(state.timerHandle);
-    state.timerHandle = null;
-  }
-}
-
-function startTimer(seconds) {
-  stopTimer();
-  state.timerSeconds = seconds;
-  state.timerHandle = setInterval(() => {
-    state.timerSeconds--;
-    if (state.timerSeconds <= 0) {
-      stopTimer();
-      state.timerSeconds = 0;
-    }
-    renderTimerOnly();
-  }, 1000);
-  render();
-}
-
-function formatTime(s) {
-  const m = Math.floor(s / 60).toString().padStart(2, "0");
-  const sec = (s % 60).toString().padStart(2, "0");
-  return `${m}:${sec}`;
-}
-
-function renderTimerOnly() {
-  const el = document.getElementById("timer-display");
-  if (el) el.textContent = formatTime(state.timerSeconds);
 }
 
 function render() {
@@ -340,23 +305,11 @@ function renderDiscuss() {
       <p class="starter-label">${T.starterLabel}</p>
       <p class="starter-name">${escapeHtml(starterName)}</p>
 
-      <div id="timer-display" class="timer-display">${formatTime(state.timerSeconds)}</div>
-
-      <div class="timer-buttons">
-        <button data-secs="60" class="secondary-btn timer-btn">1 ${T.minWord}</button>
-        <button data-secs="180" class="secondary-btn timer-btn">3 ${T.minWord}</button>
-        <button data-secs="300" class="secondary-btn timer-btn">5 ${T.minWord}</button>
-      </div>
-
       <button id="reveal-result-btn" class="primary-btn">${T.revealImpostorBtn}</button>
     </div>
   `;
 
-  document.querySelectorAll(".timer-btn").forEach((btn) => {
-    btn.onclick = () => startTimer(Number(btn.dataset.secs));
-  });
   document.getElementById("reveal-result-btn").onclick = () => {
-    stopTimer();
     state.screen = "result";
     render();
   };
